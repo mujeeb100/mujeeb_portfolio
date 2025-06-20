@@ -1,7 +1,5 @@
 "use client";
 
-import Head from 'next/head';
-
 export default function Header() {
 
   const handleScroll = (id: string) => {
