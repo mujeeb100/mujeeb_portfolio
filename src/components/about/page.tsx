@@ -13,8 +13,7 @@ const About = () => {
           </div>
           <h3 className="text-lg font-semibold mb-2">Frontend Development</h3>
           <p className="text-gray-600">
-            Building responsive and interactive user interfaces using React, Next.js, and modern CSS frameworks like Tailwind.
-          </p>
+Building responsive and interactive user interfaces using React, Next.js, Vue.js, Vuex, and modern CSS frameworks like Tailwind.          </p>
         </div>
 
         {/* Backend Card */}

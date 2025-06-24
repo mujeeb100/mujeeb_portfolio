@@ -1,3 +1,37 @@
+import React from "react";
+
+const skillsData = [
+  {
+    category: "Frontend",
+    icon: "💻",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "React.js",
+      "Vue.js",
+      "Vuex",
+      "Redux",
+      "Bootstrap",
+      "Material UI",
+      "nuxt.js",
+      "Next.js",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    category: "Backend",
+    icon: "🗄️",
+    skills: ["Node.js", "PostgreSQL", "Prisma", "Redis", "Kafka"],
+  },
+  {
+    category: "DevOps",
+    icon: "☁️",
+    skills: ["Docker", "Kubernetes", "AWS", "GitOps", "ArgoCD"],
+  },
+];
+
 const TechnicalSkills = () => {
   return (
     <section id="skills" className="bg-gray-100 px-6 md:px-20 py-20">
@@ -6,56 +40,26 @@ const TechnicalSkills = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Frontend Skills */}
-        <div className="bg-white rounded-xl shadow p-6">
-          <h3 className="text-blue-600 font-semibold text-lg flex items-center mb-4">
-            <span className="mr-2 text-xl">💻</span> Frontend
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {["HTML", "CSS", "JavaScript", "TypeScript", "React.js", "React Native", "Next.js", "Tailwind CSS"].map((skill) => (
-              <span
-                key={skill}
-                className="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full font-medium"
-              >
-                {skill}
-              </span>
-            ))}
+        {skillsData.map((group) => (
+          <div
+            key={group.category}
+            className="bg-white rounded-2xl p-6 shadow-md transition transform hover:-translate-y-2 hover:shadow-lg duration-300"
+          >
+            <h3 className="text-blue-600 font-semibold text-lg flex items-center mb-4">
+              <span className="mr-2 text-xl">{group.icon}</span> {group.category}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full font-medium hover:bg-blue-200 transition duration-200"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Backend Skills */}
-        <div className="bg-white rounded-xl shadow p-6">
-          <h3 className="text-blue-600 font-semibold text-lg flex items-center mb-4">
-            <span className="mr-2 text-xl">🗄️</span> Backend
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {["Node.js", "PostgreSQL", "Prisma", "Redis", "Kafka"].map((skill) => (
-              <span
-                key={skill}
-                className="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full font-medium"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* DevOps Skills */}
-        <div className="bg-white rounded-xl shadow p-6">
-          <h3 className="text-blue-600 font-semibold text-lg flex items-center mb-4">
-            <span className="mr-2 text-xl">☁️</span> DevOps
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {["Docker", "Kubernetes", "AWS", "GitOps", "ArgoCD"].map((skill) => (
-              <span
-                key={skill}
-                className="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full font-medium"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
