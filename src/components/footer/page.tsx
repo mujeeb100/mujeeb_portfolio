@@ -111,7 +111,7 @@ const Footer = () => {
             <br />
             Inspired by the beauty of web development and the joy of coding! 
             <br />
-            Let's build something amazing together!
+            Lets build something amazing together!
             
            <span className="text-blue-400">✨</span>
           </p>

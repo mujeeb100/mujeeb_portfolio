@@ -11,7 +11,7 @@ function Home1() {
     >
       <div className="max-w-xl">
         <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-          Hi, I'm{" "}
+          Hi, I m{" "}
           <span className="text-blue-600 typing-effect inline-block">
             Mujeeb Ansari
           </span>
