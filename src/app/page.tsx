@@ -1,6 +1,5 @@
 import About from "@/components/about/page";
 import ConsultationPage from "@/components/Consultation/Consultation";
-import Consultation from "@/components/Consultation/Consultation";
 import Conatct from "@/components/contact/page";
 import WorkExperience from "@/components/experience/page";
 import Footer from "@/components/footer/page";
