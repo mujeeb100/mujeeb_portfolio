@@ -16,7 +16,7 @@ function Home1() {
         </h1>
 
         <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-6">
-          Front End Developer
+          Full Stack Developer
         </h2>
 
         <p className="text-gray-500 dark:text-gray-400 mb-8">
@@ -39,7 +39,7 @@ function Home1() {
      <div className="mb-12 lg:mb-0">
   <div className="bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 p-10 rounded-3xl shadow-2xl text-white text-center transform transition duration-300 hover:scale-105">
     <div className="text-6xl mb-4">{"</>"}</div>
-    <div className="font-bold text-2xl md:text-3xl">Front End Software</div>
+    <div className="font-bold text-2xl md:text-3xl">Full Stack Software</div>
     <div className="text-lg md:text-xl opacity-90">Developer</div>
   </div>
 </div>

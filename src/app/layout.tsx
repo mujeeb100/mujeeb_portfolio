@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mujeeb Ansari | Front End Developer",
-  description: "Portfolio of Mujeeb Ansari, a Front End Developer",
+  title: "Mujeeb Ansari | Full Stack Developer",
+  description: "Portfolio of Mujeeb Ansari, a Full Stack Developer",
 };
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="Portfolio of Mujeeb Ansari, a Front End Developer" />
+        <meta name="description" content="Portfolio of Mujeeb Ansari, a Full stack Developer" />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
