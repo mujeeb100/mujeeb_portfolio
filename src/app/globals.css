@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply bg-white dark:bg-black transition-colors duration-300;
+}
+
+/* 
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -31,4 +38,4 @@ body {
 
 #home {
   background-color: var(--color-purple-100);
-}
+} */
