@@ -92,13 +92,6 @@ const experiences: Exp[] = [
   },
 ];
 
-const hostname = (url: string) => {
-  try {
-    return new URL(url).hostname.replace("www.", "");
-  } catch {
-    return url;
-  }
-};
 
 const WorkExperience = () => {
   const root = useRef<HTMLDivElement>(null);
