@@ -1,31 +1,197 @@
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+/* ════════════════════════════════════════════════════
+   HERO ANIMATIONS  —  drop-in replacement for home.css
+   ════════════════════════════════════════════════════ */
+
+/* ── reveal on load (staggered fade-up) ── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  opacity: 0;
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 }
 
-@keyframes blink {
-  0%, 100% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #3b82f6;
-  }
+/* ── typewriter caret ── */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.type-caret { animation: blink 1s step-end infinite; }
+
+/* ── floating motions ── */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes floaty-2 {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(-2deg); }
 }
 
-.typing-effect {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: bottom;
-  border-right: 2px solid #3b82f6;
-  animation: typing 5s steps(20, end) forwards, blink 0.75s step-end infinite;
-  max-width: fit-content;
+/* whole composition: gentle float + micro-tilt (breathing) */
+@keyframes floatTilt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(0.6deg); }
 }
-/* .typing-effect span {
-  display: inline-block;
-  animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
-} */
+.float-card { animation: floatTilt 7s ease-in-out infinite; }
+
+.float-chip   { animation: floaty 5s ease-in-out infinite; }
+.float-chip-2 { animation: floaty-2 7s ease-in-out infinite; }
+
+/* ── ambient glow: pulse + slow hue shift ── */
+@keyframes glow {
+  0%, 100% { opacity: 0.10; transform: scale(1)    translate(0, 0);    }
+  50%      { opacity: 0.20; transform: scale(1.12) translate(-20px, 20px); }
+}
+@keyframes hueShift {
+  0%, 100% { filter: blur(120px) hue-rotate(0deg); }
+  50%      { filter: blur(120px) hue-rotate(40deg); }
+}
+.hero-glow {
+  animation: glow 8s ease-in-out infinite, hueShift 14s ease-in-out infinite;
+}
+
+/* ── dot-grid background: slow infinite drift ── */
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 26px 26px; }
+}
+.hero-bg {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  animation: gridDrift 6s linear infinite;
+}
+.dark .hero-bg {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* ════════════════════════════════════════════════════
+   ✨ NEW EFFECTS
+   ════════════════════════════════════════════════════ */
+
+/* 1) NAME — animated gradient shimmer sweep */
+@keyframes nameShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.rise h1 {
+  background: linear-gradient(
+    100deg,
+    currentColor 0%, currentColor 40%,
+    var(--accent) 50%,
+    currentColor 60%, currentColor 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameShimmer 6s linear infinite;
+}
+/* keep the accent dot solid */
+.rise h1 .text-\[var\(--accent\)\] {
+  -webkit-text-fill-color: var(--accent);
+}
+
+/* 2) PHOTO FRAME — rotating gradient ring */
+@keyframes ringSpin { to { transform: rotate(360deg); } }
+.float-card > .aspect-\[4\/5\]::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--accent) 90deg,
+    #a855f7 150deg,
+    transparent 240deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: ringSpin 6s linear infinite;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* 3) PHOTO — light shimmer sweep across the image */
+@keyframes sheen {
+  0%   { transform: translateX(-130%) skewX(-18deg); }
+  60%, 100% { transform: translateX(230%) skewX(-18deg); }
+}
+.float-card > .aspect-\[4\/5\]::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 45%;
+  left: 0;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  animation: sheen 5.5s ease-in-out infinite;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* 4) CODE CARD — soft shadow breathe + subtle lift */
+@keyframes cardBreath {
+  0%, 100% { box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.35); transform: translateY(0); }
+  50%      { box-shadow: 0 28px 60px -18px rgba(58, 54, 224, 0.45); transform: translateY(-4px); }
+}
+.float-card > .absolute.-bottom-6 {
+  animation: cardBreath 6s ease-in-out infinite;
+}
+
+/* 5) CHIP — glowing pulse */
+@keyframes chipGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(58, 54, 224, 0.0); }
+  50%      { box-shadow: 0 0 22px 2px rgba(58, 54, 224, 0.35); }
+}
+.float-chip { animation: floaty 5s ease-in-out infinite, chipGlow 4s ease-in-out infinite; }
+
+/* 6) STATUS DOT ripple already via Tailwind animate-ping — add tiny scale on the pill */
+@keyframes pillFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.rise:first-child span.inline-flex { animation: pillFloat 4s ease-in-out infinite; }
+
+/* 7) BUTTONS — shine sweep on hover */
+.rise button.group { position: relative; overflow: hidden; }
+.rise button.group::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+.rise button.group:hover::after { left: 130%; }
+
+/* 8) STATS — pop-in scale when revealed */
+@keyframes statPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.rise .text-2xl.font-bold { display: inline-block; animation: statPop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both; }
+
+/* 9) TYPEWRITER prompt arrow — subtle pulse */
+@keyframes promptPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* ── respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .rise, .float-card, .float-chip, .float-chip-2, .hero-glow,
+  .type-caret, .hero-bg {
+    animation: none !important;
+    opacity: 1;
+  }
+  .rise h1 {
+    -webkit-text-fill-color: currentColor;
+    animation: none;
+  }
+  .float-card > .aspect-\[4\/5\]::before,
+  .float-card > .aspect-\[4\/5\]::after,
+  .float-card > .absolute.-bottom-6 { animation: none; }
+}

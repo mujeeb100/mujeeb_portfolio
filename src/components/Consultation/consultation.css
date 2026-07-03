@@ -1,0 +1,113 @@
+/* ── scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 3D tilt card ── */
+.tilt-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.tilt-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 30px 60px -25px rgba(58, 54, 224, 0.5);
+}
+/* keep reveal transform working before .in: only tilt after revealed */
+.tilt-card.reveal:not(.in) {
+  transform: translateY(26px);
+}
+
+/* ── cursor spotlight ── */
+.card-spot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    260px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    transparent 65%
+  );
+}
+.tilt-card:hover .card-spot {
+  opacity: 1;
+}
+
+/* ── view transitions ── */
+@keyframes detailIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes detailOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+}
+.detail-enter {
+  animation: detailIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.detail-exit {
+  animation: detailOut 0.45s ease both;
+}
+
+/* ── drifting aurora background ── */
+.aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+.aurora-1 {
+  top: -120px;
+  left: -80px;
+  height: 460px;
+  width: 460px;
+  background: var(--accent);
+  animation: drift1 18s ease-in-out infinite;
+}
+.aurora-2 {
+  bottom: -140px;
+  right: -60px;
+  height: 420px;
+  width: 420px;
+  background: #8b5cf6;
+  opacity: 0.14;
+  animation: drift2 22s ease-in-out infinite;
+}
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(80px, 60px); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-70px, -50px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .tilt-card, .aurora { animation: none !important; transition: none; opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; }
+}

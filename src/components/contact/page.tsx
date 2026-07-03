@@ -1,144 +1,86 @@
-import React from 'react';
+"use client";
+
+import { useEffect, useRef } from "react";
+import { Github, Twitter, Mail, Linkedin, ArrowUpRight } from "lucide-react";
+import "./contact.css";
+
+const ACCENT = "#3A36E0";
+
+const links = [
+  { icon: Github, label: "GitHub", handle: "mujeeb100", href: "https://github.com/mujeeb100" },
+  { icon: Twitter, label: "X (Twitter)", handle: "@mujeeb_ansari", href: "https://x.com/mujeeb20010?s=21" },
+  { icon: Mail, label: "Email", handle: "muzeeb100@yahoo.co.in", href: "mailto:muzeeb100@yahoo.co.in" },
+  { icon: Linkedin, label: "LinkedIn", handle: "Mujeeb-Ansari", href: "https://www.linkedin.com/in/mujeebansari786/" },
+];
 
 const Contact = () => {
+  const root = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
+      { threshold: 0.15 }
+    );
+    root.current?.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id="contact"
-      className="py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-white transition-colors duration-300"
+      ref={root}
+      style={{ ["--accent" as string]: ACCENT }}
+      className="bg-white px-6 py-28 text-neutral-900 transition-colors duration-300 dark:bg-neutral-950 dark:text-white"
     >
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          <span className="text-gray-800 dark:text-white">Get In </span>
-          <span className="text-blue-600 dark:text-blue-400">Touch</span>
-        </h2>
-
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
-          <p className="text-gray-600 dark:text-gray-300 text-center mb-8">
-            Feel free to reach out for projects, collaborations, or just to say hello!
+      <div className="mx-auto max-w-3xl text-center">
+        <div className="reveal">
+          <span className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
+            06 — Contact
+          </span>
+          <h2 className="mt-4 text-4xl font-extrabold tracking-tight md:text-6xl">
+            Let&apos;s build something{" "}
+            <span className="text-[var(--accent)]">great</span> together.
+          </h2>
+          <p className="mx-auto mt-5 max-w-md text-neutral-500 dark:text-neutral-400">
+            Open to projects, collaborations, or just a friendly hello. Reach out
+            on any of these.
           </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* GitHub */}
-            <a
-              href="https://github.com/mujeeb100"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-500"
-            >
-              <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-github text-blue-600 dark:text-blue-400"
-                >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-semibold">GitHub</p>
-                <p className="text-gray-800 dark:text-white font-medium">mujeeb100</p>
-              </div>
-            </a>
-
-            {/* Twitter / X */}
-            <a
-              href="https://x.com/mujeeb20010?s=21"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-500"
-            >
-              <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-twitter text-blue-600 dark:text-blue-400"
-                >
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-semibold">X</p>
-                <p className="text-gray-800 dark:text-white font-medium">@mujeeb_ansari</p>
-              </div>
-            </a>
-
-            {/* Email */}
-            <a
-              href="mailto:bagbanikram@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
-            >
-              <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-mail text-blue-600 dark:text-blue-400"
-                >
-                  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
-                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Email</p>
-                <p className="text-gray-800 dark:text-white font-medium">muzeeb100@yahoo.co.in</p>
-              </div>
-            </a>
-
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/mujeebansari786/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
-            >
-              <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-linkedin text-blue-600 dark:text-blue-400"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect width="4" height="12" x="2" y="9"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">LinkedIn</p>
-                <p className="text-gray-800 dark:text-white font-medium">Mujeeb-Ansari</p>
-              </div>
-            </a>
-          </div>
         </div>
+
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          {links.map((l, i) => {
+            const Icon = l.icon;
+            return (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="reveal group flex items-center gap-4 rounded-2xl border border-black/10 bg-neutral-50/50 p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_20px_50px_-25px_rgba(58,54,224,0.45)] dark:border-white/10 dark:bg-white/[0.02]"
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-[var(--accent)]/10 text-[var(--accent)] transition-colors duration-300 group-hover:bg-[var(--accent)] group-hover:text-white">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
+                    {l.label}
+                  </p>
+                  <p className="truncate font-semibold">{l.handle}</p>
+                </div>
+                <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-300 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--accent)] dark:text-neutral-600" />
+              </a>
+            );
+          })}
+        </div>
+
+        <a
+          href="mailto:muzeeb100@yahoo.co.in"
+          className="reveal mt-10 inline-flex items-center gap-2 rounded-xl bg-[var(--accent)] px-7 py-3.5 font-semibold text-white transition-transform hover:scale-[1.03]"
+        >
+          Email me directly <ArrowUpRight className="h-4 w-4" />
+        </a>
       </div>
     </section>
   );

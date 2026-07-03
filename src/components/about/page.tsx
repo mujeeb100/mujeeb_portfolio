@@ -1,63 +1,140 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { Code2, Database, Cloud, MapPin, ArrowUpRight } from "lucide-react";
+import "./about.css";
+
+/* same accent token as Header & Hero */
+const ACCENT = "#3A36E0";
+
+const disciplines = [
+  {
+    icon: Code2,
+    n: "01",
+    title: "Frontend Development",
+    desc: "Responsive, interactive interfaces built with React, Next.js and Vue — with a focus on performance and accessibility.",
+    tags: ["React", "Next.js", "Vue", "Tailwind"],
+  },
+  {
+    icon: Database,
+    n: "02",
+    title: "Backend Development",
+    desc: "Robust APIs and server-side applications using Node.js, TypeScript and modern database technologies.",
+    tags: ["Node.js", "TypeScript", "PostgreSQL", "Prisma"],
+  },
+  {
+    icon: Cloud,
+    n: "03",
+    title: "DevOps Engineering",
+    desc: "CI/CD pipelines, container orchestration and cloud infrastructure with Docker, Kubernetes, AWS and GitOps.",
+    tags: ["Docker", "Kubernetes", "AWS", "GitOps"],
+  },
+];
+
 const About = () => {
+  const root = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.15 }
+    );
+    root.current?.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id="about"
-      className="px-6 md:px-20 py-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-white transition-colors duration-300"
+      ref={root}
+      style={{ ["--accent" as string]: ACCENT }}
+      className="bg-white px-6 py-28 text-neutral-900 transition-colors duration-300 dark:bg-neutral-950 dark:text-white md:px-20"
     >
-      <h2 className="text-4xl font-bold text-center mb-12">
-        About <span className="text-blue-600 dark:text-blue-400">Me</span>
-      </h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {/* Frontend Card */}
-        <div className="p-6 rounded-xl shadow-md bg-white dark:bg-gray-800 border dark:border-gray-700 hover:shadow-xl transition">
-          <div className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 w-10 h-10 flex items-center justify-center rounded-full mb-4">
-            <span className="text-xl">{"</>"}</span>
-          </div>
-          <h3 className="text-lg font-semibold mb-2">Frontend Development</h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            Building responsive and interactive user interfaces using React,
-            Next.js, Vue.js, Vuex, and modern CSS frameworks like Tailwind.
-          </p>
+      <div className="mx-auto max-w-6xl">
+        {/* header */}
+        <div className="reveal">
+          <span className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
+            01 — About
+          </span>
+          <h2 className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl">
+            A complete approach to building{" "}
+            <span className="text-[var(--accent)]">software</span>.
+          </h2>
         </div>
 
-        {/* Backend Card */}
-        <div className="p-6 rounded-xl shadow-md bg-white dark:bg-gray-800 border dark:border-gray-700 hover:shadow-xl transition">
-          <div className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 w-10 h-10 flex items-center justify-center rounded-full mb-4">
-            <span className="text-xl">🗄️</span>
+        {/* intro */}
+        <div className="mt-14 grid gap-12 md:grid-cols-12">
+          <div className="reveal md:col-span-7" style={{ transitionDelay: "80ms" }}>
+            <p className="text-2xl font-semibold leading-snug tracking-tight md:text-[1.7rem]">
+              I build{" "}
+              <span className="text-[var(--accent)]">scalable web applications</span>{" "}
+              with modern technologies — and ship them through{" "}
+              <span className="text-[var(--accent)]">efficient deployment pipelines</span>.
+            </p>
           </div>
-          <h3 className="text-lg font-semibold mb-2">
-            Backend Development
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            Developing robust APIs and server-side applications using Node.js,
-            TypeScript, and various database technologies.
-          </p>
+          <div
+            className="reveal space-y-5 text-neutral-500 dark:text-neutral-400 md:col-span-5"
+            style={{ transitionDelay: "160ms" }}
+          >
+            <p>
+              A full-stack developer and DevOps engineer based in Mumbai. With
+              experience across frontend, backend and operations, I bring a
+              comprehensive approach to software — from concept to deployment and
+              maintenance.
+            </p>
+            <div className="flex items-center gap-2 font-mono text-sm text-neutral-700 dark:text-neutral-300">
+              <MapPin className="h-4 w-4 text-[var(--accent)]" />
+              Mumbai, Maharashtra · India
+            </div>
+          </div>
         </div>
 
-        {/* DevOps Card */}
-        <div className="p-6 rounded-xl shadow-md bg-white dark:bg-gray-800 border dark:border-gray-700 hover:shadow-xl transition">
-          <div className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 w-10 h-10 flex items-center justify-center rounded-full mb-4">
-            <span className="text-xl">☁️</span>
-          </div>
-          <h3 className="text-lg font-semibold mb-2">DevOps Engineering</h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            Implementing CI/CD pipelines, container orchestration, and cloud
-            infrastructure using Docker, Kubernetes, AWS, and GitOps.
-          </p>
-        </div>
-      </div>
+        {/* discipline cards */}
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
+          {disciplines.map((d, i) => {
+            const Icon = d.icon;
+            return (
+              <div
+                key={d.title}
+                className="reveal group relative overflow-hidden rounded-2xl border border-black/10 bg-neutral-50/60 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--accent)] hover:shadow-[0_20px_50px_-20px_rgba(58,54,224,0.45)] dark:border-white/10 dark:bg-white/[0.02]"
+                style={{ transitionDelay: `${i * 100 + 200}ms` }}
+              >
+                <div className="mb-5 flex items-start justify-between">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-[var(--accent)]/10 text-[var(--accent)] transition-colors duration-300 group-hover:bg-[var(--accent)] group-hover:text-white">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <span className="font-mono text-sm text-neutral-300 dark:text-neutral-600">
+                    {d.n}
+                  </span>
+                </div>
 
-      {/* Description Paragraph */}
-      <div className="bg-blue-50 dark:bg-gray-800 p-6 rounded-xl shadow text-gray-700 dark:text-gray-200 text-md leading-relaxed">
-        I&apos;m a fullstack developer and DevOps engineer based in Mumbai,
-        Maharashtra. I specialize in building scalable web applications with
-        modern technologies and implementing efficient deployment pipelines.
-        <br />
-        <br />
-        With experience in both frontend and backend development, as well as
-        DevOps practices, I bring a comprehensive approach to software
-        development, from concept to deployment and maintenance.
+                <h3 className="mb-2 text-lg font-bold">{d.title}</h3>
+                <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                  {d.desc}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {d.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-black/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-neutral-500 dark:border-white/10 dark:text-neutral-400"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 -translate-y-1 translate-x-1 text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
