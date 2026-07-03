@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono , Poppins} from "next/font/google";
 import "./globals.css";
 import Header from "@/header/page";
-import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,12 +25,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="Portfolio of Mujeeb Ansari, a Full stack Developer" />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
       >
