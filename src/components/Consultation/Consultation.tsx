@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ArrowLeft, CalendarDays } from "lucide-react";
-import "./Consultation.css";
-
+import "./consultation.css";
 /* same accent token as the rest of the site */
 const ACCENT = "#3A36E0";
 
