@@ -5,24 +5,41 @@ import StackVisual from "./StackVisual";
 import Reveal from "./Reveal";
 import { layers, type LayerId } from "@/data/site";
 
-const COLOR: Record<LayerId, string> = { ui: "text-ui", api: "text-api", infra: "text-infra" };
-const BG: Record<LayerId, string> = { ui: "bg-ui", api: "bg-api", infra: "bg-infra" };
+const COLOR: Record<LayerId, string> = { ui: "text-ui", api: "text-api", ai: "text-ai", cloud: "text-cloud" };
+const BG: Record<LayerId, string> = { ui: "bg-ui", api: "bg-api", ai: "bg-ai", cloud: "bg-cloud" };
 
 export default function StackSection() {
   const [active, setActive] = useState<LayerId>("ui");
   const refs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.getAttribute("data-layer") as LayerId);
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px" }
-    );
-    Object.values(refs.current).forEach((el) => el && io.observe(el));
-    return () => io.disconnect();
+    /* whichever card's centre is closest to the viewport centre is active */
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const mid = window.innerHeight / 2;
+      let best: LayerId = "ui";
+      let bestD = Infinity;
+      Object.entries(refs.current).forEach(([id, el]) => {
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestD) {
+          bestD = d;
+          best = id as LayerId;
+        }
+      });
+      setActive(best);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
@@ -31,18 +48,18 @@ export default function StackSection() {
         <Reveal className="max-w-3xl">
           <p className="font-mono text-xs text-ui">02 / The stack</p>
           <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-6xl">
-            Three layers. <span className="font-serif font-normal italic text-mute">One engineer</span> who can work in all of them.
+            Four layers. <span className="font-serif font-normal italic text-mute">One engineer</span> who works in all of them.
           </h2>
           <p className="mt-6 max-w-xl text-mute">
-            Most of my time goes into the top layer. Knowing the two below it means I can design screens around real data,
-            fix problems where they start, and own a feature from the first commit to production.
+            Frontend is my strongest layer. Working across the three below it means I can design screens around real data,
+            build the service and the AI behind them, and own a feature from the first commit to production.
           </p>
         </Reveal>
 
         <div className="mt-20 grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="hidden lg:block">
             <div className="sticky top-28 flex flex-col items-center">
-              <StackVisual spread={0.75} active={active} size={280} />
+              <StackVisual spread={0.8} active={active} size={260} />
               <div className="mt-4 flex gap-6 font-mono text-[11px]">
                 {layers.map((l) => (
                   <span key={l.id} className={`flex items-center gap-2 transition-colors ${active === l.id ? "text-paper" : "text-dim"}`}>

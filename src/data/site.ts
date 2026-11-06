@@ -5,7 +5,7 @@
 export const site = {
   name: "Mujeeb Ansari",
   short: "MA",
-  role: "Frontend-first Full Stack Engineer",
+  role: "Full Stack AI Engineer",
   location: "Mumbai, India",
   timezone: "Asia/Kolkata",
   email: "muzeeb100@yahoo.co.in",
@@ -24,7 +24,14 @@ export const site = {
   ],
 } as const;
 
-export type LayerId = "ui" | "api" | "infra";
+export type LayerId = "ui" | "api" | "ai" | "cloud";
+
+export const layerMeta: Record<LayerId, { path: string; name: string; color: string }> = {
+  ui: { path: "/ui", name: "Interface", color: "var(--color-ui)" },
+  api: { path: "/api", name: "Services", color: "var(--color-api)" },
+  ai: { path: "/ai", name: "Data & AI", color: "var(--color-ai)" },
+  cloud: { path: "/cloud", name: "Cloud", color: "var(--color-cloud)" },
+};
 
 export const layers: {
   id: LayerId;
@@ -42,41 +49,55 @@ export const layers: {
     name: "Interface",
     path: "/ui",
     headline: "Interfaces that stay fast and accessible as they grow.",
-    body: "This is my strongest layer. I build component systems in React and TypeScript, keep keyboard and screen-reader support in from the first commit, and structure state so a 50-screen app stays as easy to change as a 5-screen one.",
+    body: "This is my strongest layer. I build component systems in React and TypeScript, keep keyboard and screen-reader support in from the first commit, and structure state so a 50-screen app stays as easy to change as a 5-screen one. I also build real-time and 3D interfaces when the product calls for them.",
     proof: [
       "Role-aware UI for 6 user roles from one codebase",
       "Design systems and reusable component libraries",
-      "WCAG-minded semantics, focus management, reduced-motion support",
+      "Streaming AI chat UIs, data dashboards, WebGL / Three.js",
     ],
-    tools: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux Toolkit", "RTK Query", "Vue", "Recharts"],
+    tools: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux Toolkit", "RTK Query", "Three.js", "Vue"],
   },
   {
     id: "api",
     index: "L2",
-    name: "Application",
+    name: "Services",
     path: "/api",
-    headline: "Data layers and APIs the frontend can trust.",
-    body: "I design the contract between screen and server: typed API clients, cache invalidation that keeps views in sync, response normalisation, and the backend endpoints themselves when the project needs them.",
+    headline: "Python and Node services with clear, typed contracts.",
+    body: "I build the APIs the frontend depends on: FastAPI for fast typed services, Django when a project needs admin, ORM and auth out of the box, and Node where it fits. The API backing this site is a FastAPI service I wrote.",
     proof: [
-      "Cache-tag invalidation so dependent views refresh on their own",
-      "Typed clients and normalisers for inconsistent upstream APIs",
-      "REST services in Python and Node",
+      "FastAPI services with Pydantic validation and OpenAPI docs",
+      "Django apps with ORM, auth and admin",
+      "JWT auth, pagination and response normalisation",
     ],
-    tools: ["Node.js", "FastAPI", "Django", "PostgreSQL", "SQL", "REST", "JWT", "i18n"],
+    tools: ["Python", "FastAPI", "Django", "Pydantic", "Node.js", "REST", "JWT", "WebSockets"],
   },
   {
-    id: "infra",
+    id: "ai",
     index: "L3",
-    name: "Infrastructure",
-    path: "/infra",
-    headline: "Pipelines that take code from merge to production.",
-    body: "Shipping is part of the job. I set up CI/CD so every merge is built, checked and deployed the same way, and I keep environments boring and predictable.",
+    name: "Data & AI",
+    path: "/ai",
+    headline: "LLM features that are grounded in real data.",
+    body: "I add AI where it removes work: assistants that answer from a company's own data, insight panels on top of analytics, and chat that lives inside the product. Under that are PostgreSQL schemas and retrieval pipelines built to be reliable.",
+    proof: [
+      "AI process-assistant chat and AI insights in a live telecom dashboard",
+      "Retrieval pipelines (BM25 / vector search) feeding LLM prompts",
+      "PostgreSQL data modelling and SQL for analytics",
+    ],
+    tools: ["LLM APIs", "Azure OpenAI", "RAG", "Embeddings", "pgvector", "PostgreSQL", "SQL", "Prompt engineering"],
+  },
+  {
+    id: "cloud",
+    index: "L4",
+    name: "Cloud",
+    path: "/cloud",
+    headline: "Pipelines and infrastructure from merge to production.",
+    body: "Shipping is part of the job. I set up CI/CD so every merge is built, checked and deployed the same way, on Azure, AWS or Vercel, and I keep environments boring and predictable.",
     proof: [
       "Azure DevOps pipelines deploying to Azure Static Web Apps",
-      "Repeatable builds with environment-specific config",
-      "Containerised services and Git-based deploy workflows",
+      "Containerised services with Docker",
+      "Serverless Python + Next.js deploys (this site)",
     ],
-    tools: ["Azure DevOps", "Azure Static Web Apps", "Docker", "GitHub Actions", "Vercel", "Kubernetes"],
+    tools: ["Azure", "Azure DevOps", "AWS", "Docker", "GitHub Actions", "Vercel", "Kubernetes", "Linux"],
   },
 ];
 
@@ -98,8 +119,8 @@ export const services = [
   },
   {
     n: "04",
-    title: "CI/CD & deployment",
-    body: "Pipelines on Azure DevOps, GitHub Actions or Vercel, so shipping becomes routine instead of a risky event.",
+    title: "AI features & backends",
+    body: "LLM assistants grounded in your data, plus the FastAPI or Django services and PostgreSQL behind them, deployed on Azure or AWS.",
   },
 ];
 

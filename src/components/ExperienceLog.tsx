@@ -9,7 +9,7 @@ export default function ExperienceLog() {
     <section id="log" className="border-b border-line py-28 sm:py-36">
       <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
-          <p className="font-mono text-xs text-ui">03 / About & log</p>
+          <p className="font-mono text-xs text-ui">04 / About & log</p>
           <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl">
             {site.years} years, <span className="font-serif font-normal italic text-mute">one commit at a time.</span>
           </h2>
@@ -20,8 +20,8 @@ export default function ExperienceLog() {
             <div className="space-y-4 text-mute">
               <p>
                 I started in 2019 hand-writing responsive layouts in jQuery and Bootstrap. Since then I have moved into
-                React and TypeScript, worked on fintech, payroll and telecom products, and taken on the backend and CI/CD
-                work around the UI.
+                React and TypeScript, worked on fintech, payroll and telecom products, and grown into the rest of the stack:
+                Python services, PostgreSQL, LLM features and cloud deployment.
               </p>
               <p>
                 I also run{" "}

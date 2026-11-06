@@ -7,7 +7,7 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <div>
-            <p className="font-mono text-xs text-ui">04 / Work with me</p>
+            <p className="font-mono text-xs text-ui">05 / Work with me</p>
             <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-6xl">
               Full-time, contract, <span className="font-serif font-normal italic text-mute">or a project.</span>
             </h2>

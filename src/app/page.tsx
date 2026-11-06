@@ -4,6 +4,7 @@ import StackSection from "@/components/StackSection";
 import ExperienceLog from "@/components/ExperienceLog";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
+import AskSection from "@/components/AskSection";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Work />
       <StackSection />
+      <AskSection />
       <ExperienceLog />
       <Services />
       <Contact />

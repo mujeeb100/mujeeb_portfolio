@@ -1,14 +1,15 @@
-import type { LayerId } from "@/data/site";
+import { layerMeta, type LayerId } from "@/data/site";
 
 const COLORS: Record<LayerId, string> = {
-  ui: "var(--color-ui)",
-  api: "var(--color-api)",
-  infra: "var(--color-infra)",
+  ui: layerMeta.ui.color,
+  api: layerMeta.api.color,
+  ai: layerMeta.ai.color,
+  cloud: layerMeta.cloud.color,
 };
 
 /* bottom → top */
-const ORDER: LayerId[] = ["infra", "api", "ui"];
-const LABEL: Record<LayerId, string> = { ui: "L1 /ui", api: "L2 /api", infra: "L3 /infra" };
+const ORDER: LayerId[] = ["cloud", "ai", "api", "ui"];
+const LABEL: Record<LayerId, string> = { ui: "L1 /ui", api: "L2 /api", ai: "L3 /ai", cloud: "L4 /cloud" };
 
 function UiPlate() {
   return (
@@ -55,6 +56,21 @@ function ApiPlate() {
   );
 }
 
+function AiPlate() {
+  const cols = [3, 4, 2];
+  return (
+    <div className="flex h-full items-center justify-around p-[12%]">
+      {cols.map((n, ci) => (
+        <div key={ci} className="flex flex-col gap-3">
+          {Array.from({ length: n }).map((_, r) => (
+            <div key={r} className="h-3 w-3 rounded-full bg-ai shadow-[0_0_12px_var(--color-ai)]" />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function InfraPlate() {
   const nodes = ["build", "test", "deploy"];
   return (
@@ -76,7 +92,7 @@ function InfraPlate() {
   );
 }
 
-const CONTENT: Record<LayerId, () => React.JSX.Element> = { ui: UiPlate, api: ApiPlate, infra: InfraPlate };
+const CONTENT: Record<LayerId, () => React.JSX.Element> = { ui: UiPlate, api: ApiPlate, ai: AiPlate, cloud: InfraPlate };
 
 /**
  * Isometric 3-layer stack: the visual signature of the site.
@@ -91,7 +107,7 @@ export default function StackVisual({
   active?: LayerId | null;
   size?: number;
 }) {
-  const gap = 34 + spread * 86;
+  const gap = 26 + spread * 64;
 
   return (
     <div className="iso-scene relative grid place-items-center" style={{ width: size * 1.45, height: size * 1.35 }} aria-hidden>
@@ -105,7 +121,7 @@ export default function StackVisual({
               key={id}
               className="iso-plate absolute inset-0 rounded-xl border bg-ink-2/90"
               style={{
-                transform: `translateZ(${(i - 1) * gap + (isActive ? 18 : 0)}px)`,
+                transform: `translateZ(${(i - 1.5) * gap + (isActive ? 18 : 0)}px)`,
                 borderColor: isActive ? COLORS[id] : "rgb(236 235 228 / 0.14)",
                 boxShadow: isActive
                   ? `0 0 0 1px ${COLORS[id]}, 0 30px 80px -10px color-mix(in srgb, ${COLORS[id]} 45%, transparent)`

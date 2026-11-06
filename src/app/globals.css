@@ -13,6 +13,8 @@
   --color-ui: #ff4d1c;
   --color-api: #7c9cff;
   --color-infra: #3ddc97;
+  --color-cloud: #3ddc97;
+  --color-ai: #c58cff;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
