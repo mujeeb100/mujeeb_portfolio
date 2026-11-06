@@ -1,23 +1,19 @@
-import About from "@/components/about/page";
-import ConsultationPage from "@/components/Consultation/Consultation";
-import Conatct from "@/components/contact/page";
-import WorkExperience from "@/components/experience/page";
-import Footer from "@/components/footer/page";
-import Home1 from "@/components/home/page";
-import Projects from "@/components/projects/page";
-import TechnicalSkills from "@/components/skills/page";
+import Hero from "@/components/Hero";
+import Work from "@/components/Work";
+import StackSection from "@/components/StackSection";
+import ExperienceLog from "@/components/ExperienceLog";
+import Services from "@/components/Services";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
-    <div>
-      <Home1 />
-     <About />
-     <ConsultationPage />
-     <WorkExperience />
-     <Projects />
-     <TechnicalSkills />
-     <Conatct/>
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <Work />
+      <StackSection />
+      <ExperienceLog />
+      <Services />
+      <Contact />
+    </>
   );
 }
