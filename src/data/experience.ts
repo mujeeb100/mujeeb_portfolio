@@ -18,7 +18,7 @@ export const experience: Experience[] = [
     current: true,
     summary:
       "Building AI-assisted support flows for ViCare and the Service IQ analytics dashboard: KPI views, charts and a process-assistant chat on top of live APIs.",
-    stack: ["React", "TypeScript", "Tailwind", "Recharts", "LLM APIs"],
+    stack: ["React", "TypeScript", "LLM APIs", "REST", "Recharts", "Tailwind"],
   },
   {
     hash: "7be04d8",

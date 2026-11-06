@@ -8,8 +8,8 @@ import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import RoleMatrix from "@/components/RoleMatrix";
 import Reveal from "@/components/Reveal";
 
-const TEXT: Record<LayerId, string> = { ui: "text-ui", api: "text-api", infra: "text-infra" };
-const NAME: Record<LayerId, string> = { ui: "/ui", api: "/api", infra: "/infra" };
+const TEXT: Record<LayerId, string> = { ui: "text-ui", api: "text-api", ai: "text-ai", cloud: "text-cloud" };
+const NAME: Record<LayerId, string> = { ui: "/ui", api: "/api", ai: "/ai", cloud: "/cloud" };
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));

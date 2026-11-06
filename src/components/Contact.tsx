@@ -36,7 +36,7 @@ export default function Contact() {
       <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ui/10 blur-[140px]" aria-hidden />
       <div className="relative mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-2">
         <Reveal>
-          <p className="font-mono text-xs text-ui">05 / Contact</p>
+          <p className="font-mono text-xs text-ui">06 / Contact</p>
           <h2 className="mt-5 text-5xl font-semibold leading-[0.95] tracking-[-0.045em] sm:text-7xl">
             Let&apos;s build
             <br />

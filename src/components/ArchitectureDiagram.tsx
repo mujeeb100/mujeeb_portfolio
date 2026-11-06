@@ -3,8 +3,9 @@ import type { LayerId } from "@/data/site";
 
 const META: Record<LayerId, { label: string; color: string; text: string }> = {
   ui: { label: "L1 · Interface", color: "border-ui/50", text: "text-ui" },
-  api: { label: "L2 · Application", color: "border-api/50", text: "text-api" },
-  infra: { label: "L3 · Infrastructure", color: "border-infra/50", text: "text-infra" },
+  api: { label: "L2 · Services", color: "border-api/50", text: "text-api" },
+  ai: { label: "L3 · Data & AI", color: "border-ai/50", text: "text-ai" },
+  cloud: { label: "L4 · Cloud", color: "border-cloud/50", text: "text-cloud" },
 };
 
 export default function ArchitectureDiagram({ p }: { p: Project }) {

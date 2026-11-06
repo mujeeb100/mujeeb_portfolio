@@ -4,12 +4,12 @@ import type { LayerId } from "@/data/site";
 import ProjectArt from "./ProjectArt";
 import Reveal from "./Reveal";
 
-const DOT: Record<LayerId, string> = { ui: "bg-ui", api: "bg-api", infra: "bg-infra" };
+const DOT: Record<LayerId, string> = { ui: "bg-ui", api: "bg-api", ai: "bg-ai", cloud: "bg-cloud" };
 
 function Layers({ ids }: { ids: LayerId[] }) {
   return (
     <span className="flex items-center gap-1" title={ids.map((i) => `/${i}`).join(" ")}>
-      {(["ui", "api", "infra"] as LayerId[]).map((id) => (
+      {(["ui", "api", "ai", "cloud"] as LayerId[]).map((id) => (
         <span key={id} className={`h-1.5 w-1.5 rounded-full ${ids.includes(id) ? DOT[id] : "bg-paper/10"}`} />
       ))}
       <span className="sr-only">Layers: {ids.join(", ")}</span>

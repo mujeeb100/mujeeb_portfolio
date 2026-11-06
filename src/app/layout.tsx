@@ -9,28 +9,28 @@ import Loader from "@/components/Loader";
 import { site } from "@/data/site";
 
 const description =
-  "Mujeeb Ansari: frontend-first full stack engineer in Mumbai. React, TypeScript, design systems, accessibility, and the pipelines that ship them. From interface to infrastructure.";
+  "Mujeeb Ansari: Full Stack AI Engineer in Mumbai. React, TypeScript, Python, FastAPI, Django, PostgreSQL, LLM features, Azure and AWS. AI products built end to end, interface to cloud.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} · From interface to infrastructure`,
+    default: `${site.name} · Full Stack AI Engineer`,
     template: `%s · ${site.name}`,
   },
   description,
-  keywords: ["Mujeeb Ansari", "Frontend Engineer", "React", "TypeScript", "Full Stack Developer", "Mumbai", "Design Systems", "Accessibility"],
+  keywords: ["Mujeeb Ansari", "Full Stack AI Engineer", "Frontend Engineer", "FastAPI", "Django", "Python", "LLM", "Azure", "AWS", "React", "TypeScript", "Full Stack Developer", "Mumbai", "Design Systems", "Accessibility"],
   authors: [{ name: site.name, url: site.url }],
   openGraph: {
     type: "website",
     url: site.url,
-    title: `${site.name} · From interface to infrastructure`,
+    title: `${site.name} · Full Stack AI Engineer`,
     description,
     siteName: site.name,
     images: ["/mujeeb.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} · From interface to infrastructure`,
+    title: `${site.name} · Full Stack AI Engineer`,
     description,
     images: ["/mujeeb.jpg"],
   },

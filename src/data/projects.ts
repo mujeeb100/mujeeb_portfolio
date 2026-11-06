@@ -33,7 +33,7 @@ export const projects: Project[] = [
     tagline:
       "Inspections, quality reports and corrective actions across every site, in one role-aware workflow.",
     tint: "#ff4d1c",
-    layers: ["ui", "api", "infra"],
+    layers: ["ui", "api", "cloud"],
     stack: ["React", "TypeScript", "Tailwind CSS", "Redux Toolkit", "RTK Query", "Azure DevOps", "Azure Static Web Apps"],
     privateNote: "Internal platform · walkthrough on request",
     challenge:
@@ -55,7 +55,7 @@ export const projects: Project[] = [
         body: "All server state goes through RTK Query. Cache tags tie inspections, reports and actions together, so closing a corrective action automatically refreshes the report and dashboard that depend on it. There is no manual refetching and no stale screens.",
       },
       {
-        layer: "infra",
+        layer: "cloud",
         title: "Merge → build → deploy",
         body: "An Azure DevOps pipeline builds, checks and deploys every merge to Azure Static Web Apps with environment-specific configuration, so a release is a routine merge rather than a separate event.",
       },
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     architecture: [
       { layer: "ui", nodes: ["React + TypeScript", "Role-based routing", "Tailwind design tokens"] },
       { layer: "api", nodes: ["RTK Query cache", "Tag-based invalidation", "REST API"] },
-      { layer: "infra", nodes: ["Azure DevOps pipeline", "Azure Static Web Apps", "Env config"] },
+      { layer: "cloud", nodes: ["Azure DevOps pipeline", "Azure Static Web Apps", "Env config"] },
     ],
     outcomes: [
       { value: "6", label: "user roles served from one codebase" },
@@ -73,6 +73,54 @@ export const projects: Project[] = [
     showRoleMatrix: true,
   },
   {
+    slug: "ask-mujeeb",
+    title: "Ask Mujeeb: this portfolio",
+    client: "Personal · open source",
+    year: "2026",
+    role: "Design, frontend, backend, AI, deploy",
+    tagline:
+      "A Next.js + Three.js frontend and a FastAPI retrieval service, deployed together on Vercel. Ask it anything about my work.",
+    tint: "#3ddc97",
+    layers: ["ui", "api", "ai", "cloud"],
+    stack: ["Next.js 15", "React 19", "Three.js", "React Three Fiber", "Python", "FastAPI", "BM25 retrieval", "LLM API (optional)", "Vercel"],
+    link: { label: "the source on GitHub", href: "https://github.com/mujeeb100/mujeeb_portfolio" },
+    challenge:
+      "A portfolio claims you can do things. I wanted mine to show it. The site is a working full-stack AI product: a 3D frontend, a Python API, a retrieval pipeline, and one deploy for all of it. You can try every layer from the homepage.",
+    approach: [
+      {
+        layer: "ui",
+        title: "A 3D scene that explains the stack",
+        body: "The hero is a React Three Fiber scene: four glass layers with data packets moving between them, reacting to the pointer. It loads lazily, caps device pixel ratio, and falls back to a static view for reduced motion.",
+      },
+      {
+        layer: "api",
+        title: "FastAPI on serverless Python",
+        body: "The /api/py routes are a FastAPI app deployed as a Vercel Python function next to the Next.js app. Requests are validated with Pydantic, and OpenAPI docs are generated at /api/py/docs.",
+      },
+      {
+        layer: "ai",
+        title: "Retrieval first, generation second",
+        body: "Questions are scored against a knowledge base of my work using a BM25 ranker I wrote in pure Python. The top passages come back with sources. If an LLM key is configured, those passages ground the model's answer; without one, the retrieved facts are returned directly.",
+      },
+      {
+        layer: "cloud",
+        title: "One repo, one deploy",
+        body: "A push to master builds the Next.js app and the Python function together. Pull requests get preview deployments, and production updates on merge.",
+      },
+    ],
+    architecture: [
+      { layer: "ui", nodes: ["Next.js App Router", "React Three Fiber scene", "Ask Mujeeb chat UI"] },
+      { layer: "api", nodes: ["FastAPI /api/py", "Pydantic models", "OpenAPI docs"] },
+      { layer: "ai", nodes: ["Knowledge base", "BM25 ranker", "Optional LLM grounding"] },
+      { layer: "cloud", nodes: ["Vercel Python runtime", "Edge-cached frontend", "Preview deploys per PR"] },
+    ],
+    outcomes: [
+      { value: "4", label: "layers of the stack, all live on one site" },
+      { value: "<1s", label: "typical retrieval response" },
+      { value: "1", label: "push to deploy frontend and backend" },
+    ],
+  },
+  {
     slug: "service-iq",
     title: "Service IQ & ViCare AI Assist",
     client: "Vodafone Idea (Vi)",
@@ -80,8 +128,8 @@ export const projects: Project[] = [
     role: "Frontend engineer",
     tagline:
       "An analytics dashboard with an AI process assistant built in, running on live telecom data.",
-    tint: "#7c9cff",
-    layers: ["ui", "api"],
+    tint: "#c58cff",
+    layers: ["ui", "api", "ai"],
     stack: ["React", "TypeScript", "Tailwind CSS", "Recharts", "LLM APIs", "REST"],
     link: { label: "ViCare", href: "https://vicare.vodafoneidea.com" },
     challenge:
@@ -98,6 +146,11 @@ export const projects: Project[] = [
         body: "The process-assistant chat is its own component with session management. It renders through a React portal, which ended the z-index conflicts with charts and modals.",
       },
       {
+        layer: "ai",
+        title: "AI insights and a process assistant",
+        body: "LLM-generated insights explain what the KPIs mean, and a session-aware assistant answers process questions in context, so analysts don't have to switch to another tool.",
+      },
+      {
         layer: "api",
         title: "Normalising messy upstream data",
         body: "Several live APIs returned KPIs in different shapes. A normalisation layer turns them into one typed model, and a dedicated INR formatter keeps currency readable everywhere.",
@@ -105,7 +158,8 @@ export const projects: Project[] = [
     ],
     architecture: [
       { layer: "ui", nodes: ["Dashboard + charts", "AI insights modal", "Portal-mounted chat"] },
-      { layer: "api", nodes: ["KPI normaliser", "Session-managed chat API", "Multiple live REST sources"] },
+      { layer: "ai", nodes: ["LLM insights", "Process assistant", "Session memory"] },
+      { layer: "api", nodes: ["KPI normaliser", "Chat API", "Multiple live REST sources"] },
     ],
     outcomes: [
       { value: "Live", label: "data from multiple backend APIs" },

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const steps = ["mounting /ui", "connecting /api", "provisioning /infra", "ready"];
+const steps = ["mounting /ui", "starting /api", "loading /ai", "deploying /cloud", "ready"];
 
 /** Short boot sequence, once per session. Content renders underneath, so it never blocks LCP. */
 export default function Loader() {
@@ -33,7 +33,7 @@ export default function Loader() {
   }, []);
 
   if (!show) return null;
-  const step = steps[Math.min(steps.length - 1, Math.floor(pct / 26))];
+  const step = steps[Math.min(steps.length - 1, Math.floor(pct / 21))];
 
   return (
     <div
