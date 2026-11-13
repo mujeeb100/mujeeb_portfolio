@@ -33,10 +33,10 @@ export default function CommandPalette() {
   const commands: Cmd[] = useMemo(
     () => [
       { id: "work", group: "Navigate", label: "Selected work", hint: "/#work", run: () => go("/#work") },
-      { id: "stack", group: "Navigate", label: "The stack: UI / API / AI / Cloud", hint: "/#stack", run: () => go("/#stack") },
+      { id: "about", group: "Navigate", label: "About & stack", hint: "/#about", run: () => go("/#about") },
       { id: "ask", group: "Navigate", label: "Ask my AI (FastAPI + RAG)", hint: "/#ask", run: () => go("/#ask") },
       { id: "docs", group: "Navigate", label: "API docs (OpenAPI)", hint: "/api/py/docs", run: () => { close(); window.open("/api/py/docs", "_blank"); } },
-      { id: "log", group: "Navigate", label: "Experience log", hint: "/#log", run: () => go("/#log") },
+      { id: "log", group: "Navigate", label: "Track record", hint: "/#log", run: () => go("/#log") },
       { id: "services", group: "Navigate", label: "Work with me", hint: "/#services", run: () => go("/#services") },
       { id: "contact", group: "Navigate", label: "Contact", hint: "/#contact", run: () => go("/#contact") },
       ...projects.map((p) => ({

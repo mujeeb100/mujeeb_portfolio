@@ -74,15 +74,16 @@ export default function AskSection() {
   const maxScore = Math.max(1, ...(last?.res?.sources.map((s) => s.score) ?? [1]));
 
   return (
-    <section id="ask" className="relative border-b border-line py-28 sm:py-36">
-      <div className="pointer-events-none absolute right-0 top-20 h-[420px] w-[520px] rounded-full bg-ai/10 blur-[140px]" aria-hidden />
+    <section id="ask" className="sec relative">
+      <div className="pointer-events-none absolute right-0 top-20 h-[420px] w-[520px] rounded-full bg-ui/10 blur-[140px]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <div>
-            <p className="font-mono text-xs text-ai">03 / Ask my AI</p>
-            <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-6xl">
-              Don&apos;t take my word for it.{" "}
-              <span className="font-serif font-normal italic text-mute">Ask my backend.</span>
+            <p className="eyebrow">Ask my AI</p>
+            <h2 className="display mt-4 text-[clamp(52px,7vw,104px)]" data-agent data-type>
+              Don&apos;t take my word.
+              <br />
+              <span className="accent">Ask my backend.</span>
             </h2>
           </div>
           <p className="max-w-md text-mute lg:justify-self-end">

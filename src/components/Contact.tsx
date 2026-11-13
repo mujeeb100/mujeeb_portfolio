@@ -32,15 +32,15 @@ export default function Contact() {
     "w-full rounded-md border border-line bg-ink px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-dim focus:border-paper/40";
 
   return (
-    <section id="contact" className="relative overflow-hidden py-28 sm:py-36">
+    <section id="contact" className="sec relative overflow-hidden">
       <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ui/10 blur-[140px]" aria-hidden />
       <div className="relative mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-2">
         <Reveal>
-          <p className="font-mono text-xs text-ui">06 / Contact</p>
-          <h2 className="mt-5 text-5xl font-semibold leading-[0.95] tracking-[-0.045em] sm:text-7xl">
-            Let&apos;s build
+          <p className="eyebrow">Contact</p>
+          <h2 className="display mt-4 text-[clamp(70px,10vw,160px)]" data-agent data-type>
+            Let&apos;s work
             <br />
-            <span className="font-serif font-normal italic text-mute">the whole stack.</span>
+            <span className="accent">together.</span>
           </h2>
           <p className="mt-8 max-w-md text-mute">
             Tell me what you&apos;re working on. I usually reply within one working day, and it&apos;s{" "}
@@ -117,7 +117,7 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-paper py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-ui"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded bg-ui py-3.5 font-mono text-xs uppercase tracking-[0.15em] text-ink transition-colors hover:bg-paper"
             >
               Send message →
             </button>

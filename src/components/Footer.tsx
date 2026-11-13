@@ -22,8 +22,9 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-mute">
               {[
                 ["/#work", "Work"],
-                ["/#stack", "Stack"],
-                ["/#log", "Log"],
+                ["/#ask", "Ask AI"],
+                ["/#log", "Track record"],
+                ["/#about", "About"],
                 ["/#contact", "Contact"],
               ].map(([h, l]) => (
                 <li key={h}>
@@ -49,15 +50,15 @@ export default function Footer() {
         </div>
 
         <p
-          className="mt-20 select-none whitespace-nowrap text-center text-[clamp(3rem,13.5vw,12rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-paper/[0.06]"
+          className="mt-20 select-none whitespace-nowrap text-center display text-[clamp(3rem,15vw,15rem)] leading-[0.8] text-paper/[0.06]"
           aria-hidden
         >
           Mujeeb Ansari
         </p>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 font-mono text-[11px] text-dim">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pb-24 pt-6 font-mono text-[11px] text-dim">
           <span>© {new Date().getFullYear()} {site.name}</span>
-          <span>Built with Next.js, TypeScript & Tailwind · Deployed on Vercel</span>
+          <span>Built with agents in the loop · Next.js · FastAPI · Vercel</span>
           <a href="#main" className="hover:text-paper">
             Back to top ↑
           </a>

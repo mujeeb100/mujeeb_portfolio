@@ -79,18 +79,18 @@ export const projects: Project[] = [
     year: "2026",
     role: "Design, frontend, backend, AI, deploy",
     tagline:
-      "A Next.js + Three.js frontend and a FastAPI retrieval service, deployed together on Vercel. Ask it anything about my work.",
+      "A Next.js frontend with a live layer of AI-agent cursors and a FastAPI retrieval service, deployed together on Vercel. Ask it anything about my work.",
     tint: "#3ddc97",
     layers: ["ui", "api", "ai", "cloud"],
-    stack: ["Next.js 15", "React 19", "Three.js", "React Three Fiber", "Python", "FastAPI", "BM25 retrieval", "LLM API (optional)", "Vercel"],
+    stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Python", "FastAPI", "BM25 retrieval", "LLM API (optional)", "Vercel"],
     link: { label: "the source on GitHub", href: "https://github.com/mujeeb100/mujeeb_portfolio" },
     challenge:
-      "A portfolio claims you can do things. I wanted mine to show it. The site is a working full-stack AI product: a 3D frontend, a Python API, a retrieval pipeline, and one deploy for all of it. You can try every layer from the homepage.",
+      "A portfolio claims you can do things. I wanted mine to show it. The site is a working full-stack AI product: an animated editorial frontend, a Python API, a retrieval pipeline, and one deploy for all of it. You can try every layer from the homepage.",
     approach: [
       {
         layer: "ui",
-        title: "A 3D scene that explains the stack",
-        body: "The hero is a React Three Fiber scene: four glass layers with data packets moving between them, reacting to the pointer. It loads lazily, caps device pixel ratio, and falls back to a static view for reduced motion.",
+        title: "Agents in the loop",
+        body: "Ten labelled agent cursors (Copy, Layout, QA, Deploy…) roam the page, draw selection boxes around real elements and re-type headlines. Typing happens on a positioned clone so React's DOM is never mutated, and the whole layer pauses for reduced motion or with one click.",
       },
       {
         layer: "api",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
       },
     ],
     architecture: [
-      { layer: "ui", nodes: ["Next.js App Router", "React Three Fiber scene", "Ask Mujeeb chat UI"] },
+      { layer: "ui", nodes: ["Next.js App Router", "Agent cursor layer", "Ask Mujeeb chat UI"] },
       { layer: "api", nodes: ["FastAPI /api/py", "Pydantic models", "OpenAPI docs"] },
       { layer: "ai", nodes: ["Knowledge base", "BM25 ranker", "Optional LLM grounding"] },
       { layer: "cloud", nodes: ["Vercel Python runtime", "Edge-cached frontend", "Preview deploys per PR"] },
