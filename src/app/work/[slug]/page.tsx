@@ -45,7 +45,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               ← All work
             </Link>
             <p className="mt-10 font-mono text-xs text-ui">Case study · 0{idx + 1}</p>
-            <h1 className="mt-5 max-w-5xl text-[clamp(2.4rem,6.5vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+            <h1 className="display mt-5 max-w-5xl text-[clamp(3rem,8vw,7.5rem)]" data-agent data-type>
               {p.title}
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-relaxed text-mute">{p.tagline}</p>
@@ -140,7 +140,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
               {p.outcomes.map((o, i) => (
                 <Reveal key={o.label} delay={i * 0.06} className="bg-ink p-7">
-                  <div className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{o.value}</div>
+                  <div className="display text-5xl text-ui sm:text-6xl">{o.value}</div>
                   <div className="mt-3 text-sm text-mute">{o.label}</div>
                 </Reveal>
               ))}
@@ -180,7 +180,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         {/* next */}
         <Link href={`/work/${next.slug}`} className="group block py-24">
           <p className="font-mono text-xs text-dim">Next case study</p>
-          <p className="mt-4 text-4xl font-semibold tracking-[-0.04em] transition-colors group-hover:text-ui sm:text-6xl">
+          <p className="display mt-4 text-5xl transition-colors group-hover:text-ui sm:text-7xl">
             {next.title} <span className="inline-block transition-transform group-hover:translate-x-2">→</span>
           </p>
         </Link>

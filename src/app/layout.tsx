@@ -2,10 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import Header from "@/components/Header";
+import Nav from "@/components/Nav";
+import AgentLayer from "@/components/AgentLayer";
 import Footer from "@/components/Footer";
 import CommandPalette from "@/components/CommandPalette";
-import Loader from "@/components/Loader";
 import { site } from "@/data/site";
 
 const description =
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     title: `${site.name} · Full Stack AI Engineer`,
     description,
     siteName: site.name,
-    images: ["/mujeeb.jpg"],
+    images: ["/mujeeb-cutout.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} · Full Stack AI Engineer`,
     description,
-    images: ["/mujeeb.jpg"],
+    images: ["/mujeeb-cutout.png"],
   },
 };
 
@@ -50,11 +50,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <Loader />
-        <Header />
+        <div className="rail" aria-hidden />
+        <Nav />
         <main id="main">{children}</main>
         <Footer />
         <CommandPalette />
+        <AgentLayer />
       </body>
     </html>
   );

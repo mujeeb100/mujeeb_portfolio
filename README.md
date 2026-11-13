@@ -1,8 +1,8 @@
-# mujeeb.dev — Full Stack AI Engineer portfolio
+# Mujeeb Ansari — Full Stack AI Engineer portfolio
 
 Personal portfolio of Mujeeb Ansari.
 
-- **Frontend:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Motion, Three.js / React Three Fiber
+- **Frontend:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Motion, Anton display type, and an "agents in the loop" cursor layer (`src/components/AgentLayer.tsx`)
 - **Backend:** FastAPI (Python) in `api/index.py`, deployed as a Vercel Python function under `/api/py/*`
 - **AI:** "Ask Mujeeb" — hand-written BM25 retrieval over a knowledge base, with optional LLM grounding
 - **Docs:** `/api/py/docs` (OpenAPI)

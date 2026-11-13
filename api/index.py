@@ -68,7 +68,7 @@ KB: list[dict[str, str]] = [
     {"id": "cloud", "title": "Cloud and DevOps",
      "text": "Cloud and DevOps: Azure DevOps CI/CD pipelines, Azure Static Web Apps, AWS, Docker containers, GitHub Actions, Vercel deployments, and Kubernetes basics. He sets up pipelines so every merge is built, checked and deployed the same way."},
     {"id": "portfolio", "title": "This portfolio",
-     "text": "This portfolio is a full-stack project: a Next.js 15 and React 19 frontend with a Three.js 3D scene, a FastAPI backend under /api/py with OpenAPI docs at /api/py/docs, a BM25 retrieval pipeline, and a single Vercel deploy for frontend and backend. The source is on GitHub at github.com/mujeeb100/mujeeb_portfolio."},
+     "text": "This portfolio is a full-stack project: a Next.js 15 and React 19 frontend with an animated layer of AI-agent cursors, a FastAPI backend under /api/py with OpenAPI docs at /api/py/docs, a BM25 retrieval pipeline, and a single Vercel deploy for frontend and backend. The source is on GitHub at github.com/mujeeb100/mujeeb_portfolio."},
     {"id": "agency", "title": "Elite Workforce International",
      "text": "Mujeeb is the founder of Elite Workforce International (eliteworkforceintl.com), an IT services and creative agency offering web and mobile development, custom software, UI/UX design, IT consulting and cloud services."},
     {"id": "hire", "title": "Availability and contact",

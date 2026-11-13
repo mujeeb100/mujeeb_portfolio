@@ -1,20 +1,20 @@
 import Hero from "@/components/Hero";
 import Work from "@/components/Work";
-import StackSection from "@/components/StackSection";
-import ExperienceLog from "@/components/ExperienceLog";
-import Services from "@/components/Services";
-import Contact from "@/components/Contact";
+import Marquee from "@/components/Marquee";
+import Record from "@/components/Record";
 import AskSection from "@/components/AskSection";
+import About from "@/components/About";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <Work />
-      <StackSection />
+      <Marquee />
+      <Record />
       <AskSection />
-      <ExperienceLog />
-      <Services />
+      <About />
       <Contact />
     </>
   );
